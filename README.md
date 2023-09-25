@@ -1,4 +1,4 @@
-# FoodBox-Capstone
+# FoodBox
 Foodbox Ecommerce Website Food Delivery
 
 Database management: MySQL 
