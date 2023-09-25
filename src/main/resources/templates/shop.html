@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+<title>Shop Products</title>
+<link rel="icon" href="images\logo.png"   type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+*{
+  font-family: 'Nunito', sans-serif;
+ 
+}
+
+*::selection{
+  background:var(--green);
+  color:#fff;
+}
+
+.content{
+  flex:1 1 40rem;
+}
+
+.content span{
+  font-size: 2rem;
+  color:#666;
+}
+
+
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #4b0b00;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  background-color: #270000;
+  transform-origin: bottom  right;
+  transition: transform 0.2445s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+body {
+  background: transparent;
+}
+
+.col-md-3{
+ border: 1px solid white;
+ margin: 1rem;
+ box-shadow: 1px 0 0px 0.2px rgba(0,0,0,0.10), 0 2px 2px rgba(0,0,0,0.20);
+ top: 50%;
+ left: 10%
+}
+
+.col-md-3:hover {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.equal-height-columns{
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+flex-wrap:wrap;
+
+}
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .1875rem
+}
+
+.btn-align{
+ 
+ margin : auto;
+}
+.card-img-actions {
+    position: relative
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    text-align: center
+}
+
+.card-img {
+    width: 350px
+}
+
+
+
+/* media queries  */
+
+@media(max-width:1200px){
+
+  html{
+    font-size: 55%;
+  }
+
+}
+
+@media(max-width:991px){
+
+  .header-1,
+  .header-2{
+    padding:2rem;
+  }
+
+  section{
+    padding:2rem;
+  }
+
+}
+
+
+@media(max-width:768px){
+
+  #menu-bar{
+    display: initial;
+  }
+
+  .header-2 .navbar{
+    position: absolute;
+    top:100%; left: 0; right:0;
+    background:var(--black);
+    padding:1rem 2rem;
+    display: none;
+  }
+
+  .header-2 .navbar.active{
+    display: initial;
+  }
+
+  .header-2 .navbar a{
+    font-size: 2.5rem;
+    display: block;
+    text-align: center;
+    background:#fff;
+    padding:1rem;
+    margin:1.5rem 0;
+  }
+
+  .home .content{
+    text-align: center;
+  }
+
+  .home .content h3{
+    font-size: 4rem;
+  }
+
+  .deal{
+    background-position: left;
+  }
+
+  .deal .content{
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .deal .content .count-down{
+    justify-content: center;
+  }
+
+  .contact form .inputBox input{
+    width:100%;
+  }
+
+  .newsletter h3{
+    font-size: 2.2rem;
+  }
+
+}
+
+@media(max-width:450px){
+
+  html{
+    font-size: 50%;
+  }
+
+  .heading{
+    font-size: 3rem;
+  }
+
+  .header-1{
+    flex-flow: column;
+  }
+
+  .header-1 .search-box-container{
+    width:100%;
+    margin-top: 2rem;
+  }
+
+  .logo{
+    font-size: 4rem;
+  }
+
+  .deal .content .count-down .box h3{
+    font-size: 4rem;
+  }
+
+  .deal .content .count-down .box span{
+    font-size: 1.5rem;
+  }
+
+}
+	</style>
+
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="header-1">
+
+			<a href="/" class="logo"><img src="images/logo.png" width="200px"
+				height="100%"></a>
+
+		</div>
+		<div class="container-fluid">
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto"></ul>
+				<ul class="navbar-nav" style=" font-family: Nunito, sans-serif;  padding:.5rem 1.5rem;">
+					<li class="nav-item active"><a class="nav-link" th:href="@{/}"
+						href="#">home</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/shop}" href="#">shop</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+					</li>
+					<li class="nav-item active"><a class="nav-link"
+						sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+					</li>
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/cart}" href="#"><i
+							class="fas fa fa-shopping-cart "></i></a>
+					<li class="nav-item active"><span class="nav-link"
+						th:text="${cartCount}">0</span></li>
+				</ul>
+
+			</div>
+		</div>
+	
+	</nav>
+	
+	<br>
+  <div class="content"  align="center">
+        <span class="hover-underline-animation"> The best comfort food</span>
+        
+        
+    </div> 
+    <div class="dropdown" style="left: 75%">
+
+				<button class="btn btn-success dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					Filter <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<a th:href="@{/shop}"><li class="list-group-item">All
+							Products</li></a>
+					<a href="" th:each="category, iStat : ${categories}"
+						th:href="@{/shop/category/{id}(id=${category.id})}"><li
+						class="list-group-item" th:text="${category.name}"></li></a>
+
+				</ul>
+			</div>
+
+	<div class="container">
+		<div class="row equal-height-columns ">
+		
+            
+                <div class="col-md-3"  th:each="product : ${products}">
+                <div class="equal-column-content">
+                  <div class="card" style="background-color: transparent; border: none">
+                  <div class="card-body" >
+                      <div class="card-img-actions">  <img class="img-fluid"  height="100%" width="350px" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
+                     </div> 
+                   </div>
+                   <div class="Card-content">
+                            <h5 class="font-weight-semibold mb-2" th:text="${product.name}"></h5>
+                            <h4 class="mb-0 font-weight-semibold">₹ <span th:text="${product.price}"></span></h4>
+                            </div>
+                            
+                            <div class="Card-desceiption">
+                            <p th:text="${product.description}" >Welcome to FoodBox.</p>
+                            </div>
+                           
+                             <div>
+                        <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="btn btn-primary btn-align">View Product</a>
+                        </div>
+                        </div>
+                       
+                        
+                    </div>
+                    </div>
+                </div>
+        
+	</div>
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+</body>
+</html>

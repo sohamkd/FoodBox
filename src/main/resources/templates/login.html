@@ -1,0 +1,98 @@
+
+ <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.FoodBox.Com</title>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="/css/loginPage.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+    <link rel="icon" href="images\logo.png"   type="image/x-icon">
+</head>
+<body>
+
+
+
+<header>
+
+    <div class="header-1">
+
+        <a href="#" class="logo"><img src="images\logo.png"  width="200px" height="100%"></a>
+
+        
+
+    </div>
+
+    <div class="header-2">
+
+        <div id="menu-bar" class="fas fa-bars"></div>
+
+        <nav class="navbar">
+            <a href="/">Home</a>
+           
+            <a href="/shop">Product</a>
+           
+            <a href="/register">SignUp</a>
+        
+            
+        </nav>
+
+</header>
+<div class="bo">
+<div class="container" id="container" >
+    <div class="form-container log-in-container" >
+    <form  class="logform" th:action="@{/login}" method="post">
+<h1>Login</h1>
+<input type="email" placeholder="Email" name="email" id="email"/>
+<input type="password" placeholder="Password" name="password" id="password" />
+<div th:if="${param.error}" class="alert alert-error text-danger">
+                    Invalid username or password.
+                </div>
+<br>
+<input type="submit" value="Login" class="btn btn-primary btn-block">
+                <br>
+
+
+<span>or use your Gmail account</span>
+
+<div class="social">
+ <a class="btn btn-outline-dark" href="/oauth2/authorization/google"  role="button" style="text-transform:none;background-color: transparent; color: black; border: 1 1px solid;" >
+      <img width="17px"  alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+      Login with Google
+    </a>
+</div>
+<br>
+<span  style="font-size: 15px;">Don't have an account <a class="linkControl" style="color: #767a00;" href="./register.html"
+                                                th:href="@{/register}">Register here</a></span>
+                <br>
+<a href="#" class="a1">Forgot your password?</a>
+
+</form>
+
+
+    </div>
+    <div class="overlay-container">
+    <div class="overlay">
+    <div class="overlay-container">
+<div class="overlay">
+<div class="overlay-panel overlay-right">
+  <img src="images/Inkedaac362353835bdf70c8ce09581cfaa69_LI-removebg-preview.png" alt="" width="400px">
+</div>
+</div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>-->

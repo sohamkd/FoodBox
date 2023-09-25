@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>www.FoodBox.Com</title>
+
+<!-- font awesome cdn link  -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<!-- custom css file link  -->
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/script.js"></script>
+<link rel="icon" href="images\logo.png" type="image/x-icon">
+<style type="text/css">
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:#dedede;
+  border-radius:25px;
+  min-width: 150px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration:none;
+  display: block;
+}
+
+
+.dropdown:hover .dropdown-content {
+border-radius:25px;
+display: block;}
+
+.dropdown:hover .dropbtn {background-color: red;}
+</style>
+</head>
+<body>
+
+
+	<header>
+
+		<div class="header-1">
+
+			<a href="#" class="logo"><img src="images\logo.png" width="200px"
+				height="100%"></a>
+
+			<div style="color: #bfbfbf; opacity: -0.3rem">
+				<h1>
+					<i class="fas fa-phone-alt"></i> +91 9119422728
+				</h1>
+				<br>
+				<h1>
+					<i class="fas fa-map-marker-alt"></i> Karveer Kolhapur
+					Maharashtra-416013
+				</h1>
+			</div>
+
+
+		</div>
+
+		<div class="header-2">
+
+			<div id="menu-bar" class="fas fa-bars"></div>
+
+			<nav class="navbar">
+
+				<a href="/">Home</a> <a href="/shopbycat">Category</a> <a
+					href="/shop">Product</a> <a href="/aboutus">Contact</a> <a
+					href="/login">Join Us</a>
+
+
+
+			</nav>
+
+			<div class="icons">
+				<a href="/cart" class="fas fa-shopping-cart"> </a> <a href="/give"
+					class="fas fa-heart"></a> 
+
+				<div class="dropdown">
+				
+					<a class="fas fa-user-circle">
+						
+					</a>
+					<div class="dropdown-content" style="font-size: 30px">
+					<a href="/register">SignUp</a>
+						<a sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login <i class="fas fa-sign-in-alt"></i></a>
+						<a sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout
+							<i class="fas fa-sign-out-alt"></i>
+						</a>
+
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</header>
+
+
+	<section class="home" id="home">
+
+		<div class="image">
+			<img src="images/food-png_546030.png" alt="">
+		</div>
+
+		<div class="content">
+			<span class="hover-underline-animation"> The best comfort food</span>
+			<h3>Life is uncertain Eat dessert first.</h3>
+			<a href="/shop" class="btn">Shop Now</a>
+		</div>
+
+	</section>
+
+
+
+	<section class="banner-container">
+
+
+
+		<div class="banner">
+			<img src="images/banner-2.jpg" alt="">
+			<div class="content">
+				<h3>limited offer</h3>
+				<p>upto 50% off</p>
+				<a href="/shop" class="btn">check out</a>
+			</div>
+		</div>
+		<div class="banner">
+			<img src="images/efc53dde8dcca2032292cdb7ac3188bb.png" alt="">
+
+		</div>
+
+	</section>
+
+	<!-- banner section ends -->
+
+	<!-- category section starts  -->
+
+	<section class="category" id="category">
+
+		<h1 class="heading">
+			shop by <span>category</span>
+		</h1>
+
+		<div class="box-container">
+
+			<div class="box">
+
+
+				<a href="/shopbycat"><img src="images/qvdrrnjnt6aywfz9wqce.jpg"
+					alt=""></a>
+			</div>
+			<div class="box">
+
+
+				<a href="/shopbycat"><img src="images/cb0fuky4kdrjyisnvox1.jpg"
+					alt=""></a>
+			</div>
+			<div class="box">
+
+
+				<a href="/shopbycat"><img src="images/hhzyzm1gusxbanpelsqr.jpg"
+					alt=""></a>
+			</div>
+
+		</div>
+
+	</section>
+
+
+	<section class="product" id="product">
+
+
+		<div class="card"
+			style="width: 18rem; border: 1px solid #ccc; background-color: #f4f4f4; padding: 20px; margin-bottom: 10px;"
+			th:each="product : ${products}">
+			<img class="card-img-top" height="100%" width="150px"
+				th:src="@{${'/productImages/' + product.imageName}}"
+				th:alt="${product.name}">
+			<div class="card-body">
+				<h5 class="card-title" th:text="${product.name}"></h5>
+				<h4>
+					₹ <span th:text="${product.price}"></span>
+				</h4>
+				<p class="card-text" th:text="${product.description}">Some quick
+					example text to build on the card title and make up the bulk of the
+					card's content.</p>
+				<a href="#" class="btn btn-primary"
+					th:href="@{/shop/viewproduct/{id}(id=${product.id})}">View
+					Product</a>
+			</div>
+			</div>
+			</section>
+
+			<section class="home" id="home">
+				<div class="content">
+					<span class="hover-underline-animation">Fastest Delivary
+						Ever</span>
+					<h3>Fullfill Your Foody Dreams With FoodBox</h3>
+					<a href="#" class="btn">Join Us Now</a>
+				</div>
+				<div class="image">
+					<img
+						src="images/Inkedaac362353835bdf70c8ce09581cfaa69_LI-removebg-preview.png"
+						alt="">
+				</div>
+
+
+
+			</section>
+
+
+			<!-- deal section ends -->
+
+
+			<!-- newsletter section starts  -->
+
+			<section class="newsletter">
+
+				<h3 class="hover-underline-animation">subscribe us for latest
+					updates</h3>
+
+				<form action="">
+					<input class="box" type="email" placeholder="enter your email">
+					<input type="submit" value="subscribe" class="btn"
+						style="background-color: rgb(0, 0, 29);">
+				</form>
+
+			</section>
+
+			<!-- newsletter section ends -->
+
+			<!-- footer section starts  -->
+
+			<section class="footer">
+
+				<div class="box-container">
+
+					<div class="box">
+						<a href="#" class="logo"><img src="images\logo.png"
+							width="130px" height="35%"></a>
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+							laborum illum quam error ut alias!</p>
+						<div class="share">
+							<a href="#" class="btn fab fa-facebook-f"></a> <a href="#"
+								class="btn fab fa-twitter"></a> <a href="#"
+								class="btn fab fa-instagram"></a> <a href="#"
+								class="btn fab fa-linkedin"></a>
+						</div>
+					</div>
+
+					<div class="box">
+						<h3>our location</h3>
+						<div class="links">
+							<a href="#">Mumbai</a> <a href="#">Pune</a> <a href="#">Kolhapur</a>
+							<a href="#">Satara</a> <a href="#">kagal</a>
+						</div>
+					</div>
+
+					<div class="box">
+						<h3>quick links</h3>
+						<div class="links">
+							<a href="#">home</a> <a href="#">category</a> <a href="#">product</a>
+
+							<a href="#">contact</a> <a href="#">Join</a>
+						</div>
+					</div>
+
+
+
+				</div>
+
+				<h1 class="credit">
+					created by <span> &copy;ONKAR_CHARATE OCWEBTECH&trade; </span> |
+					all rights reserved!
+				</h1>
+
+			</section>
+</body>
+</html>
